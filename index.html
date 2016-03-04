@@ -15,39 +15,38 @@
         getInitialState: function() {
           return({
             username: "",
-		currentTime: ""
+		        currentTime: ""
           })
         },
-	componentDidMount() {
-	  var self = this;
-	  var time = new Date();
-	  time = time.toTimeString();
 
-	  self.timer = setInterval(function(self) {
-            self.setState({
-	      currentTime: time	
-	    });
-   	  }, 500);	
-	},
+      	componentDidMount() {
+      	  this.timer = setInterval( () => {
+            this.setState({
+    	         currentTime: ( new Date().toTimeString() )
+    	      });
+       	  }, 500);
+      	},
+
         nameChange: function(e) {
           this.setState({
             username: e.target.value
           })
         },
+
         render: function() {
           return (
             <div>
             <input type="text" placeholder="Name" onChange={this.nameChange}/>
             <p>
               Hello, {this.state.username}!
-              It is {this.props.date.toTimeString()}
+              It is {this.state.currentTime}
             </p>
             </div>
           );
         }
       });
 
-	ReactDOM.render(<HelloWorld date={new Date()}></HelloWorld>, document.querySelector("#example"));
+      ReactDOM.render(<HelloWorld/>, document.querySelector("#example"));
     </script>
   </body>
 </html>
