@@ -11,8 +11,8 @@
     <div id="example"></div>
     <script type="text/babel">
 
-      var HelloWorld = React.createClass({
-        getInitialState: function() {
+      const HelloWorld = React.createClass({
+        getInitialState() {
           return({
             username: "",
 		        currentTime: ""
@@ -27,13 +27,13 @@
        	  }, 500);
       	},
 
-        nameChange: function(e) {
+        nameChange(e) {
           this.setState({
             username: e.target.value
-          })
+          });
         },
 
-        render: function() {
+        render() {
           return (
             <div>
             <input type="text" placeholder="Name" onChange={this.nameChange}/>
